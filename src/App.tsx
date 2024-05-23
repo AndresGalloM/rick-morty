@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import './App.css'
-import Home from './views/Home/Index'
+import Characters from './views/characters/Index'
 
-function App () {
+function App() {
   return (
     <>
       <h1>Api rick and morty</h1>
-      <Home />
+      <Characters />
     </>
   )
 }
