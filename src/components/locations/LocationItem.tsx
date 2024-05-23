@@ -1,0 +1,22 @@
+import { Location } from '../../types/locations'
+
+const LocationItem = ({ location }: { location: Location }) => {
+  const { id, name, type, dimension, residents } = location
+
+  return (
+    <li className='location-item' key={id}>
+      <h3>{name}</h3>
+      <p>
+        <strong>Type:</strong> {type}
+      </p>
+      <p>
+        <strong>Dimension:</strong> {dimension}
+      </p>
+      <p>
+        <strong>Residents:</strong> {residents.length}
+      </p>
+    </li>
+  )
+}
+
+export default LocationItem
