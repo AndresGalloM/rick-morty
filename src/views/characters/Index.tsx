@@ -2,7 +2,7 @@ import CharacterList from '../../components/characters/CharacterList'
 import { useCharacters } from '../../hooks/useCharacters'
 import './Characters.css'
 
-const Home = () => {
+const Characters = () => {
   const { characters } = useCharacters()
 
   const hasCharacters = characters.length > 0
@@ -18,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Characters
