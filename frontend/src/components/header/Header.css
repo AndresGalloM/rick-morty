@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 8px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 0px 12px;
+  border-radius: 99px;
+}
+
+nav a {
+  font-size: 0.9rem;
+  padding: 8px;
+  color: currentColor;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #facc15;
+}
+
+.active {
+  color: #facc15;
+}
+
+nav {
+  animation: nav-shadown 1s linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
+}
+
+@keyframes nav-shadown {
+  to {
+    backdrop-filter: blur(8px);
+    background-color: rgba(94, 94, 94, 0.295);
+  }
+}

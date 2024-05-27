@@ -1,0 +1,18 @@
+#root {
+  max-width: 1580px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+main {
+  padding-top: 4rem;
+}
