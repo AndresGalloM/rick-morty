@@ -16,3 +16,8 @@ p {
 main {
   padding-top: 4rem;
 }
+
+button,
+input {
+  line-height: 1.25;
+}
