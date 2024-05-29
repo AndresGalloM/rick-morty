@@ -1,8 +1,15 @@
-import './Register.css'
 import { useUser } from '../../../hooks/useUser'
+import Spinner from '../../spinner/Index'
+import './Register.css'
 
 const RegisterForm = () => {
-  const { register, handleSubmit, onSubmitRegister, validateInputs } = useUser()
+  const {
+    register,
+    handleSubmit,
+    onSubmitRegister,
+    validateInputs,
+    isSubmitting
+  } = useUser()
 
   return (
     <div className='form-box'>
@@ -24,7 +31,9 @@ const RegisterForm = () => {
           />
         </div>
 
-        <button onClick={validateInputs}>Register</button>
+        <button onClick={validateInputs}>
+          {isSubmitting ? <Spinner size={20} /> : 'Register'}
+        </button>
       </form>
     </div>
   )

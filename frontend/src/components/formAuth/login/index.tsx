@@ -1,9 +1,16 @@
-import './Login.css'
-import { Link } from 'react-router-dom'
+import Spinner from '../../spinner/Index'
 import { useUser } from '../../../hooks/useUser'
+import { Link } from 'react-router-dom'
+import './Login.css'
 
 const LoginForm = () => {
-  const { register, handleSubmit, onSubmitLogin, validateInputs } = useUser()
+  const {
+    register,
+    handleSubmit,
+    onSubmitLogin,
+    validateInputs,
+    isSubmitting
+  } = useUser()
 
   return (
     <div className='form-box'>
@@ -25,7 +32,9 @@ const LoginForm = () => {
           />
         </div>
 
-        <button onClick={validateInputs}>Login</button>
+        <button onClick={validateInputs}>
+          {isSubmitting ? <Spinner size={20} /> : 'Login'}
+        </button>
         <p className='foot'>
           Don't have an account yet? <Link to='/register'>Register</Link>
         </p>

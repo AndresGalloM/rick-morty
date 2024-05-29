@@ -1,34 +1,35 @@
+import { useUser } from '../../hooks/useUser'
 import { NavLink } from 'react-router-dom'
+import { MouseEvent } from 'react'
 import './Header.css'
 
-const routes = [
-  {
-    path: '/',
-    title: 'Characters'
-  },
-  {
-    path: '/locations',
-    title: 'Locations'
-  },
-  {
-    path: '/favorites',
-    title: 'Proyectos'
-  },
-  {
-    path: '/login',
-    title: 'Login'
-  }
-]
-
 const Header = () => {
+  const { isLogged, logout } = useUser()
+
+  const handleClick = (e: MouseEvent) => {
+    e.preventDefault()
+    logout()
+  }
+
+  const renderLoggedButtons = () => {
+    return isLogged ? (
+      <>
+        <NavLink to='/favorites'>Favorites</NavLink>
+        <button className='logout' onClick={handleClick}>
+          Logout
+        </button>
+      </>
+    ) : (
+      <NavLink to='/login'>Login</NavLink>
+    )
+  }
+
   return (
     <header>
       <nav>
-        {routes.map(({ path, title }) => (
-          <NavLink key={path} to={path}>
-            {title}
-          </NavLink>
-        ))}
+        <NavLink to='/'>Characters</NavLink>
+        <NavLink to='/locations'>Locations</NavLink>
+        {renderLoggedButtons()}
       </nav>
     </header>
   )
