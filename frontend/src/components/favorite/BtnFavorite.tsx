@@ -3,7 +3,7 @@ import './BtnFavorite.css'
 
 const BtnFavorite = () => {
   return (
-    <button>
+    <button className='favorite-button'>
       <HeartIcon />
       <span>Agregar a favorito</span>
     </button>

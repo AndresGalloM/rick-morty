@@ -1,4 +1,4 @@
-button {
+.favorite-button {
   width: fit-content;
   display: flex;
   gap: 5px;
@@ -9,9 +9,10 @@ button {
   cursor: pointer;
   margin-top: 8px;
   padding: 6px 10px;
+  font-size: 0.9rem;
 }
 
-button:hover {
+.favorite-button:hover {
   color: #facc15;
   border-color: #facc15;
 }
