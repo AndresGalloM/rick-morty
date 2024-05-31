@@ -11,12 +11,16 @@ const SECRET_KEY = process.env.SECRET_KEY as string
 router.post('/register', async (req, res) => {
   const { name, password }: { name: string; password: string } = req.body
 
-  if (name === '') {
-    return res.status(400).json({ error: 'Name is required', payload: {} })
+  if (!name || typeof name !== 'string') {
+    return res
+      .status(400)
+      .json({ error: 'Name must be a string and is required', payload: {} })
   }
 
-  if (password === '') {
-    return res.status(400).json({ error: 'Password is required', payload: {} })
+  if (!password || typeof password !== 'string') {
+    return res
+      .status(400)
+      .json({ error: 'Password must be a string and is required', payload: {} })
   }
 
   const existUser = users.some((user) => user.name === name)

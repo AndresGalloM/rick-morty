@@ -6,8 +6,8 @@ type ExpressHandler = (req: Request, res: Response) => void
 export const getAllFavorites: ExpressHandler = (req, res) => {
   const { name } = req.params
 
-  const userFavorites =
-    favorites.find((favorite) => favorite.nameUser === name)?.favorites ?? []
+  const userFavorites = favorites.find((favorite) => favorite.nameUser === name)
+    ?.favorites ?? { characters: [], locations: [] }
 
   res.status(200).json({ error: null, payload: { favorites: userFavorites } })
 }
