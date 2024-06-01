@@ -1,8 +1,10 @@
 import { Character } from '../../types/characters'
-import BtnFavorite from '../favorite/BtnFavorite'
+import { FavoriteType } from '../../types/favorite'
+import BtnFavorite from '../favorites/BtnFavorite'
 
 const CharacterItem = ({ character }: { character: Character }) => {
   const {
+    id,
     name,
     status,
     species,
@@ -29,7 +31,7 @@ const CharacterItem = ({ character }: { character: Character }) => {
           <strong>Location:</strong> {originName}
         </p>
       </div>
-      <BtnFavorite />
+      <BtnFavorite id={id} favoriteType={FavoriteType.CHARACTERS} />
     </li>
   )
 }
