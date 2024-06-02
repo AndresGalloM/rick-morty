@@ -64,7 +64,7 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ error: 'Invalid password', payload: {} })
   }
 
-  const token = jwt.sign(user, SECRET_KEY, { expiresIn: 10 * 60 })
+  const token = jwt.sign(user, SECRET_KEY, { expiresIn: 60 * 60 })
 
   res.status(200).json({ error: null, payload: { token } })
 })
