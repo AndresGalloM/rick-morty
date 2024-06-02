@@ -1,6 +1,5 @@
+import BtnCharacters from '../favorites/BtnCharacters'
 import { Character } from '../../types/characters'
-import { FavoriteType } from '../../types/favorite'
-import BtnFavorite from '../favorites/BtnFavorite'
 
 const CharacterItem = ({ character }: { character: Character }) => {
   const {
@@ -31,7 +30,7 @@ const CharacterItem = ({ character }: { character: Character }) => {
           <strong>Location:</strong> {originName}
         </p>
       </div>
-      <BtnFavorite id={id} favoriteType={FavoriteType.CHARACTERS} />
+      <BtnCharacters id={id} />
     </li>
   )
 }

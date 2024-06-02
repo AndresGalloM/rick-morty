@@ -1,0 +1,18 @@
+.button-section {
+  font-size: 0.9rem;
+  padding: 8px;
+  color: currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.button-section:hover {
+  color: #facc15;
+  background: none;
+}
+
+.active {
+  color: #facc15;
+}

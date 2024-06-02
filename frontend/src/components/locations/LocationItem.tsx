@@ -1,6 +1,5 @@
-import { FavoriteType } from '../../types/favorite'
+import BtnLocations from '../favorites/BtnLocations'
 import { Location } from '../../types/locations'
-import BtnFavorite from '../favorites/BtnFavorite'
 
 const LocationItem = ({ location }: { location: Location }) => {
   const { id, name, type, dimension, residents } = location
@@ -19,7 +18,7 @@ const LocationItem = ({ location }: { location: Location }) => {
           <strong>Residents:</strong> {residents.length}
         </p>
       </div>
-      <BtnFavorite id={id} favoriteType={FavoriteType.LOCATIONS} />
+      <BtnLocations id={id} />
     </li>
   )
 }

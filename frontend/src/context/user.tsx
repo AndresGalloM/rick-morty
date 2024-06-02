@@ -6,7 +6,7 @@ const Context = createContext<UserContext>({} as UserContext)
 export const UserContextProvider = ({
   children
 }: {
-  children: JSX.Element[]
+  children: JSX.Element[] | JSX.Element
 }) => {
   const [jwt, setJwt] = useState<string | null>(
     () => window.localStorage.getItem('token') ?? null

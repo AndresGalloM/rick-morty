@@ -1,32 +1,17 @@
 import UserContext from '../context/user'
 import toast from 'react-hot-toast'
+import FavoriteContext from '../context/favorite'
 import { useUser } from './useUser'
 import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
-import { Favorite, ListFavorites } from '../types/favorite'
-import { addFavoriteService, getFavoritesService } from '../services/favorites'
+import { useContext } from 'react'
+import { Favorite } from '../types/favorite'
+import { addFavoriteService } from '../services/favorites'
 
 export const useFavorites = () => {
-  const [listFavorites, setListFavorites] = useState<ListFavorites>({
-    characters: [],
-    locations: []
-  })
+  const { characters, locations, setFavorites } = useContext(FavoriteContext)
   const { jwt } = useContext(UserContext)
   const { isLogged } = useUser()
   const navigate = useNavigate()
-
-  const getFavorites = async () => {
-    const {
-      error,
-      payload: { favorites }
-    } = await getFavoritesService({ jwt: jwt as string })
-
-    if (error) {
-      return toast.error(error)
-    }
-
-    setListFavorites(favorites)
-  }
 
   const addFavorite = async ({ id, favoriteType }: Favorite) => {
     if (!isLogged) return navigate('/login')
@@ -42,14 +27,18 @@ export const useFavorites = () => {
     }
 
     toast.success('Successfully added')
+    setFavorites((prev) => {
+      return {
+        ...prev,
+        [favoriteType]: [...prev[favoriteType], id]
+      }
+    })
   }
 
   return {
     addFavorite,
-    listFavorites,
-    getFavorites,
-    thereFavorites: Boolean(
-      listFavorites.characters.length && listFavorites.locations.length
-    )
+    characters,
+    locations,
+    thereFavorites: Boolean(characters.length && locations.length)
   }
 }

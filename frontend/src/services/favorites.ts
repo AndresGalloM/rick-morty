@@ -9,13 +9,20 @@ const URL_BACK = import.meta.env.VITE_API_BACKEND
 const URL_API = import.meta.env.VITE_API_RICK_MORTY
 
 export const getFavoritesService: getFavorites = async ({ jwt }) => {
-  const response = await fetch(`${URL_BACK}/favorites`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`
-    }
-  })
+  try {
+    const response = await fetch(`${URL_BACK}/favorites`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`
+      }
+    })
 
-  return response.json()
+    return response.json()
+  } catch (e) {
+    return {
+      error: 'Unexpected error, try again later',
+      payload: null
+    }
+  }
 }
 
 export const addFavoriteService: AddFavorites = async ({
@@ -23,19 +30,26 @@ export const addFavoriteService: AddFavorites = async ({
   favoriteType,
   jwt
 }) => {
-  const response = await fetch(`${URL_BACK}/favorites`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${jwt}`
-    },
-    body: JSON.stringify({
-      id,
-      favoriteType
+  try {
+    const response = await fetch(`${URL_BACK}/favorites`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`
+      },
+      body: JSON.stringify({
+        id,
+        favoriteType
+      })
     })
-  })
 
-  return response.json()
+    return response.json()
+  } catch (e) {
+    return {
+      error: 'Unexpected error, try again later',
+      payload: null
+    }
+  }
 }
 
 export const getMultipleCharacters: GetMultipleCharacters = async ({ ids }) => {

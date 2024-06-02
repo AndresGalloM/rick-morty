@@ -56,3 +56,7 @@ export type GetMultipleLocations = ({
 }: {
   ids: number[]
 }) => Promise<RickMortyLocations>
+
+export type FavoriteContext = {
+  setFavorites: React.Dispatch<React.SetStateAction<ListFavorites>>
+} & ListFavorites

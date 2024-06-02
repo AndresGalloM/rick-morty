@@ -16,3 +16,8 @@
   color: #facc15;
   border-color: #facc15;
 }
+
+.remove:hover {
+  color: #ff1212;
+  border-color: #ff1212;
+}

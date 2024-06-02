@@ -1,19 +1,21 @@
+import toast from 'react-hot-toast'
+import CharacterList from '../characters/CharacterList'
+import LocationList from '../locations/LocationList'
 import { useEffect, useState } from 'react'
 import { useFavorites } from '../../hooks/useFavorites'
 import {
   getMultipleCharacters,
   getMultipleLocations
 } from '../../services/favorites'
-import toast from 'react-hot-toast'
 import { Character } from '../../types/characters'
-import CharacterList from '../characters/CharacterList'
-import LocationList from '../locations/LocationList'
 import { Location } from '../../types/locations'
+import './FavoriteList.css'
+import { FavoriteType } from '../../types/favorite'
 
 const FavoriteList = () => {
   const {
-    listFavorites: { characters: idsCharacters, locations: idsLocations },
-    getFavorites,
+    characters: idsCharacters,
+    locations: idsLocations,
     thereFavorites
   } = useFavorites()
 
@@ -22,10 +24,6 @@ const FavoriteList = () => {
   const [favoriteSection, setFavoriteSection] = useState<
     'characters' | 'locations'
   >('characters')
-
-  useEffect(() => {
-    getFavorites()
-  }, [])
 
   useEffect(() => {
     if (!idsCharacters.length) return
@@ -62,7 +60,9 @@ const FavoriteList = () => {
       {thereFavorites ? (
         <>
           <button
-            className='logout'
+            className={`button-section ${
+              favoriteSection === FavoriteType.CHARACTERS ? 'active' : ''
+            }`}
             onClick={() => {
               setFavoriteSection('characters')
             }}
@@ -70,7 +70,9 @@ const FavoriteList = () => {
             Characters
           </button>
           <button
-            className='logout'
+            className={`button-section ${
+              favoriteSection === FavoriteType.LOCATIONS ? 'active' : ''
+            }`}
             onClick={() => {
               setFavoriteSection('locations')
             }}
