@@ -32,6 +32,10 @@ const FavoriteList = () => {
         toast.error(error)
       }
 
+      if (!Array.isArray(payload) && payload) {
+        return setCharacters([payload])
+      }
+
       setCharacters(payload)
     })
 
@@ -39,6 +43,10 @@ const FavoriteList = () => {
     getMultipleLocations({ ids: idsLocations }).then(({ error, payload }) => {
       if (error) {
         toast.error(error)
+      }
+
+      if (!Array.isArray(payload) && payload) {
+        return setLocations([payload])
       }
 
       setLocations(payload)
