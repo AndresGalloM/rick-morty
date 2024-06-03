@@ -11,6 +11,7 @@ import { Character } from '../../types/characters'
 import { Location } from '../../types/locations'
 import './FavoriteList.css'
 import { FavoriteType } from '../../types/favorite'
+import Spinner from '../spinner/Index'
 
 const FavoriteList = () => {
   const {
@@ -24,8 +25,11 @@ const FavoriteList = () => {
   const [favoriteSection, setFavoriteSection] = useState<
     'characters' | 'locations'
   >('characters')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
+
     if (!idsCharacters.length) return
     getMultipleCharacters({ ids: idsCharacters }).then(({ error, payload }) => {
       if (error) {
@@ -51,6 +55,7 @@ const FavoriteList = () => {
 
       setLocations(payload)
     })
+    setLoading(false)
   }, [idsCharacters, idsLocations])
 
   const renderCharacterList = () => {
@@ -67,27 +72,30 @@ const FavoriteList = () => {
     <>
       {thereFavorites ? (
         <>
-          <button
-            className={`button-section ${
-              favoriteSection === FavoriteType.CHARACTERS ? 'active' : ''
-            }`}
-            onClick={() => {
-              setFavoriteSection('characters')
-            }}
-          >
-            Characters
-          </button>
-          <button
-            className={`button-section ${
-              favoriteSection === FavoriteType.LOCATIONS ? 'active' : ''
-            }`}
-            onClick={() => {
-              setFavoriteSection('locations')
-            }}
-          >
-            Locations
-          </button>
+          <nav className='favorite-sections'>
+            <button
+              className={`button-section ${
+                favoriteSection === FavoriteType.CHARACTERS ? 'active' : ''
+              }`}
+              onClick={() => {
+                setFavoriteSection('characters')
+              }}
+            >
+              Characters
+            </button>
+            <button
+              className={`button-section ${
+                favoriteSection === FavoriteType.LOCATIONS ? 'active' : ''
+              }`}
+              onClick={() => {
+                setFavoriteSection('locations')
+              }}
+            >
+              Locations
+            </button>
+          </nav>
 
+          {loading && <Spinner size={40} />}
           {favoriteSection === 'characters' && renderCharacterList()}
           {favoriteSection === 'locations' && renderLocationList()}
         </>

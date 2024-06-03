@@ -5,7 +5,10 @@ import { useUser } from './useUser'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { Favorite } from '../types/favorite'
-import { addFavoriteService } from '../services/favorites'
+import {
+  addFavoriteService,
+  deleteFavoriteService
+} from '../services/favorites'
 
 export const useFavorites = () => {
   const { characters, locations, setFavorites } = useContext(FavoriteContext)
@@ -35,8 +38,29 @@ export const useFavorites = () => {
     })
   }
 
+  const deleteFavorite = async ({ id, favoriteType }: Favorite) => {
+    const { error } = await deleteFavoriteService({
+      id,
+      favoriteType,
+      jwt: jwt as string
+    })
+
+    if (error) {
+      return toast.error(error)
+    }
+
+    toast.success('Successfully deleted')
+    setFavorites((prev) => {
+      return {
+        ...prev,
+        [favoriteType]: prev[favoriteType].filter((favorite) => favorite !== id)
+      }
+    })
+  }
+
   return {
     addFavorite,
+    deleteFavorite,
     characters,
     locations,
     thereFavorites: Boolean(characters.length && locations.length)

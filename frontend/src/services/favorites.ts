@@ -1,5 +1,6 @@
 import {
   AddFavorites,
+  DeleteFavorites,
   getFavorites,
   GetMultipleCharacters,
   GetMultipleLocations
@@ -33,6 +34,33 @@ export const addFavoriteService: AddFavorites = async ({
   try {
     const response = await fetch(`${URL_BACK}/favorites`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`
+      },
+      body: JSON.stringify({
+        id,
+        favoriteType
+      })
+    })
+
+    return response.json()
+  } catch (e) {
+    return {
+      error: 'Unexpected error, try again later',
+      payload: null
+    }
+  }
+}
+
+export const deleteFavoriteService: DeleteFavorites = async ({
+  id,
+  favoriteType,
+  jwt
+}) => {
+  try {
+    const response = await fetch(`${URL_BACK}/favorites`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`

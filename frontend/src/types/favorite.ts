@@ -39,6 +39,12 @@ export type AddFavorites = ({
   jwt
 }: Favorite & { jwt: string }) => Promise<ResponseFavorite>
 
+export type DeleteFavorites = ({
+  id,
+  favoriteType,
+  jwt
+}: Favorite & { jwt: string }) => Promise<ResponseFavorite>
+
 export type getFavorites = ({
   jwt
 }: {
@@ -60,3 +66,9 @@ export type GetMultipleLocations = ({
 export type FavoriteContext = {
   setFavorites: React.Dispatch<React.SetStateAction<ListFavorites>>
 } & ListFavorites
+
+export type BtnFavorite = {
+  id: number
+  isFavorite: boolean
+  favoriteType: FavoriteType
+}
