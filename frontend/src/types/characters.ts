@@ -34,3 +34,9 @@ export interface Characters {
   info: Info
   results: Character[]
 }
+
+export type GetCharacters = ({
+  pageParam
+}: {
+  pageParam: number
+}) => Promise<Characters>

@@ -14,7 +14,7 @@ const CharacterItem = ({ character }: { character: Character }) => {
 
   return (
     <li className='character-item'>
-      <img src={image} alt={name} />
+      <img src={image} alt={name} loading='lazy' />
       <h3>{name}</h3>
       <div>
         <p>

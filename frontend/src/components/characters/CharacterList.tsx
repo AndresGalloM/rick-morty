@@ -1,5 +1,5 @@
-import { Character } from '../../types/characters'
 import CharacterItem from './CharacterItem'
+import { Character } from '../../types/characters'
 
 const CharacterList = ({ characters }: { characters: Character[] }) => {
   return (

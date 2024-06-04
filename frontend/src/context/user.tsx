@@ -13,7 +13,7 @@ export const UserContextProvider = ({
   )
 
   useEffect(() => {
-    console.log(jwt)
+    // console.log(jwt)
   }, [jwt])
 
   return <Context.Provider value={{ jwt, setJwt }}>{children}</Context.Provider>
