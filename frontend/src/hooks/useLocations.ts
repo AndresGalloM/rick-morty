@@ -1,10 +1,27 @@
-import { useState } from 'react'
-import data from '../mocks/locations.json'
+import { useInfiniteQuery } from '@tanstack/react-query'
+import { getLocationsService } from '../services/locations'
 
 export const useLocations = () => {
-  const [responseLocations, setResponseLocations] = useState(data)
+  const { isLoading, isError, data, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ['locations'],
+      queryFn: getLocationsService,
+      getNextPageParam: (lastPage, _, lastPageParam) => {
+        if (lastPage.info.next === null) return null
 
-  const locations = responseLocations.results
+        return lastPageParam + 1
+      },
+      initialPageParam: 1
+    })
 
-  return { locations }
+  const locations = data?.pages.flatMap((page) => page.results) ?? []
+
+  return {
+    locations,
+    isLoading,
+    isError,
+    hasNextPage,
+    hasLocations: locations.length > 0,
+    fetchNextPage
+  }
 }

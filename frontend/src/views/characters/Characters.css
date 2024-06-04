@@ -21,6 +21,7 @@
 .character-item img {
   width: 100%;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .character-item h3 {
@@ -30,9 +31,4 @@
 
 .character-item p {
   margin: 0;
-}
-
-.infinite-scroll {
-  overflow: initial !important;
-  margin-bottom: 20px;
 }

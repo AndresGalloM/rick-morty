@@ -19,3 +19,9 @@ export interface Locations {
   info: Info
   results: Location[]
 }
+
+export type GetLocations = ({
+  pageParam
+}: {
+  pageParam: number
+}) => Promise<Locations>
