@@ -1,17 +1,9 @@
-import toast from 'react-hot-toast'
-import CharacterList from '../characters/CharacterList'
-import LocationList from '../locations/LocationList'
-import { useEffect, useState } from 'react'
+import FavoriteLocations from './FavoriteLocations'
+import FavoriteCharacters from './FavoriteCharacters'
+import { useState } from 'react'
 import { useFavorites } from '../../hooks/useFavorites'
-import {
-  getMultipleCharacters,
-  getMultipleLocations
-} from '../../services/favorites'
-import { Character } from '../../types/characters'
-import { Location } from '../../types/locations'
-import './FavoriteList.css'
 import { FavoriteType } from '../../types/favorite'
-import Spinner from '../spinner/Index'
+import './FavoriteList.css'
 
 const FavoriteList = () => {
   const {
@@ -20,57 +12,15 @@ const FavoriteList = () => {
     thereFavorites
   } = useFavorites()
 
-  const [characters, setCharacters] = useState<Character[] | null>(null)
-  const [locations, setLocations] = useState<Location[] | null>(null)
   const [favoriteSection, setFavoriteSection] = useState<
     'characters' | 'locations'
   >('characters')
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-
-    if (!idsCharacters.length) return
-    getMultipleCharacters({ ids: idsCharacters }).then(({ error, payload }) => {
-      if (error) {
-        toast.error(error)
-      }
-
-      if (!Array.isArray(payload) && payload) {
-        return setCharacters([payload])
-      }
-
-      setCharacters(payload)
-    })
-
-    if (!idsLocations.length) return
-    getMultipleLocations({ ids: idsLocations }).then(({ error, payload }) => {
-      if (error) {
-        toast.error(error)
-      }
-
-      if (!Array.isArray(payload) && payload) {
-        return setLocations([payload])
-      }
-
-      setLocations(payload)
-    })
-    setLoading(false)
-  }, [idsCharacters, idsLocations])
-
-  const renderCharacterList = () => {
-    if (!characters?.length) return
-    return <CharacterList characters={characters} />
-  }
-
-  const renderLocationList = () => {
-    if (!locations?.length) return
-    return <LocationList locations={locations} />
-  }
 
   return (
     <>
-      {thereFavorites ? (
+      {!thereFavorites && <h3>There are not favorites</h3>}
+
+      {thereFavorites && (
         <>
           <nav className='favorite-sections'>
             <button
@@ -95,12 +45,14 @@ const FavoriteList = () => {
             </button>
           </nav>
 
-          {loading && <Spinner size={40} />}
-          {favoriteSection === 'characters' && renderCharacterList()}
-          {favoriteSection === 'locations' && renderLocationList()}
+          {favoriteSection === 'characters' && (
+            <FavoriteCharacters ids={idsCharacters} />
+          )}
+
+          {favoriteSection === 'locations' && (
+            <FavoriteLocations ids={idsLocations} />
+          )}
         </>
-      ) : (
-        <h3>There are not favorites</h3>
       )}
     </>
   )

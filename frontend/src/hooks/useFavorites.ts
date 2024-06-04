@@ -63,6 +63,6 @@ export const useFavorites = () => {
     deleteFavorite,
     characters,
     locations,
-    thereFavorites: Boolean(characters.length && locations.length)
+    thereFavorites: Boolean(characters.length || locations.length)
   }
 }

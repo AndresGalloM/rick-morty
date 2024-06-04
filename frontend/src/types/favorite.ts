@@ -23,16 +23,6 @@ type ResponseFavorite = {
   }
 }
 
-type RickMortyCharacters = {
-  error: string | null
-  payload: Character[] | null
-}
-
-type RickMortyLocations = {
-  error: string | null
-  payload: Location[] | null
-}
-
 export type AddFavorites = ({
   id,
   favoriteType,
@@ -55,13 +45,13 @@ export type GetMultipleCharacters = ({
   ids
 }: {
   ids: number[]
-}) => Promise<RickMortyCharacters>
+}) => Promise<Character[]>
 
 export type GetMultipleLocations = ({
   ids
 }: {
   ids: number[]
-}) => Promise<RickMortyLocations>
+}) => Promise<Location[]>
 
 export type FavoriteContext = {
   setFavorites: React.Dispatch<React.SetStateAction<ListFavorites>>

@@ -81,53 +81,23 @@ export const deleteFavoriteService: DeleteFavorites = async ({
 }
 
 export const getMultipleCharacters: GetMultipleCharacters = async ({ ids }) => {
-  try {
-    const rawResponse = await fetch(`${URL_API}/character/${ids}`)
-    const response = await rawResponse.json()
+  if (ids.length === 0) return []
 
-    if (!rawResponse.ok) {
-      return {
-        error: response.error,
-        payload: null
-      }
-    }
+  const rawResponse = await fetch(`${URL_API}/character/${ids}`)
+  const response = await rawResponse.json()
 
-    return {
-      error: null,
-      payload: response
-    }
-  } catch (e) {
-    return {
-      error: 'Unexpected error, try again later',
-      payload: null
-    }
-  }
+  if (!rawResponse.ok) throw new Error(response.error)
+
+  return Array.isArray(response) ? response : [response]
 }
 
-export const getMultipleLocations: GetMultipleLocations = async ({
-  ids
-}: {
-  ids: number[]
-}) => {
-  try {
-    const rawResponse = await fetch(`${URL_API}/location/${ids}`)
-    const response = await rawResponse.json()
+export const getMultipleLocations: GetMultipleLocations = async ({ ids }) => {
+  if (ids.length === 0) return []
 
-    if (!rawResponse.ok) {
-      return {
-        error: response.error,
-        payload: null
-      }
-    }
+  const rawResponse = await fetch(`${URL_API}/location/${ids}`)
+  const response = await rawResponse.json()
 
-    return {
-      error: null,
-      payload: response
-    }
-  } catch (e) {
-    return {
-      error: 'Unexpected error, try again later',
-      payload: null
-    }
-  }
+  if (!rawResponse.ok) throw new Error(response.error)
+
+  return Array.isArray(response) ? response : [response]
 }
