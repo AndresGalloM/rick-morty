@@ -1,0 +1,65 @@
+.theme {
+  position: relative;
+}
+
+.theme-button {
+  font-size: 0.9rem;
+  padding: 8px;
+  color: currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: 0.5s;
+}
+
+.theme-button:hover {
+  color: #facc15;
+  background: none;
+  transform: scale(1.1);
+}
+
+.themes-menu {
+  display: none;
+  position: absolute;
+  right: 10px;
+  min-width: 110px;
+  height: min-content;
+  padding: 4px;
+  border: 1px solid #6b728033;
+  border-radius: 6px;
+  text-align: start;
+  font-size: 0.9rem;
+  animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.open {
+  display: block;
+}
+
+.themes-menu ul {
+  margin: 0;
+}
+
+.themes-menu li {
+  padding: 4px 8px;
+  cursor: default;
+  font-size: 0.875rem;
+}
+
+.themes-menu li:hover {
+  background: #6b728080;
+  border-radius: 2px;
+}
+
+@keyframes scale-up-center {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,3 +1,4 @@
+import Theme from '../theme/Index'
 import { useUser } from '../../hooks/useUser'
 import { NavLink } from 'react-router-dom'
 import { MouseEvent } from 'react'
@@ -30,6 +31,7 @@ const Header = () => {
         <NavLink to='/'>Characters</NavLink>
         <NavLink to='/locations'>Locations</NavLink>
         {renderLoggedButtons()}
+        <Theme />
       </nav>
     </header>
   )
