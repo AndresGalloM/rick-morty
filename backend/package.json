@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "PORT=3000 SECRET_KEY=d07942ee62c6b61343b646f447668488e717389d56c27c0fb1c964081697b4b7 ts-node ./server.ts",
+    "dev": "PORT=3000 SECRET_KEY=1234 ts-node ./server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
