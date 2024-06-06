@@ -25,7 +25,9 @@ const FavoriteList = () => {
           <nav className='favorite-sections'>
             <button
               className={`button-section ${
-                favoriteSection === FavoriteType.CHARACTERS ? 'active' : ''
+                favoriteSection === FavoriteType.CHARACTERS
+                  ? 'favorite-active'
+                  : ''
               }`}
               onClick={() => {
                 setFavoriteSection('characters')

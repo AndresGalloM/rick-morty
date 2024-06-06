@@ -4,6 +4,7 @@
   gap: 5px;
   align-items: center;
   background: transparent;
+  color: currentColor;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   cursor: pointer;
@@ -13,8 +14,17 @@
 }
 
 .favorite-button:hover {
-  color: #facc15;
-  border-color: #facc15;
+  background: #f5f5f5;
+
+  color: var(--secondary-color-light);
+  border-color: var(--secondary-color-light);
+}
+
+.dark .favorite-button:hover {
+  background: #3030303f;
+
+  color: var(--secondary-color-dark);
+  border-color: var(--secondary-color-dark);
 }
 
 .remove:hover {

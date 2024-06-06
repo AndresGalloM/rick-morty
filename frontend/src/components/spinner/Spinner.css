@@ -2,9 +2,13 @@
   display: flex;
   width: min-content;
   margin: auto;
-  color: #facc15;
-  height: 100%;
+  color: var(--secondary-color-light);
+  height: min-content;
   animation: spinner 1s linear infinite;
+}
+
+.dark .spinner {
+  color: var(--secondary-color-dark);
 }
 
 @keyframes spinner {

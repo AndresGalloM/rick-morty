@@ -16,11 +16,7 @@ const Characters = () => {
 
   return (
     <>
-      {isLoading && (
-        <div>
-          <Spinner size={40} />
-        </div>
-      )}
+      {isLoading && <Spinner size={40} />}
 
       {isError && <p>Error...</p>}
 

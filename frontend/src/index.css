@@ -1,21 +1,36 @@
+* {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
+
 :root {
   font-family: 'Onest Variable', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: #ffffff;
+  color: var(--color-light);
+  background-color: var(--background-light);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --background-dark: #171717;
+  --background90-dark: #171717e6;
+  --background-light: #ffffff;
+  --background90-light: #ffffffe6;
+  --color-dark: #ffffff;
+  --color-light: #000000de;
+  --secondary-color-light: #261574;
+  --secondary60-color-light: #1d0f5d99;
+  --secondary-color-dark: #facc15;
+  --secondary60-color-dark: #ffe88e80;
 }
 
 .dark {
-  color: white;
-  background: #171717;
+  color: var(--color-dark);
+  background: var(--background-dark);
 }
 
 a {
@@ -39,7 +54,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+  background-color: var(--secondary60-color-light);
+}
+
+.dark body::-webkit-scrollbar-thumb {
+  background-color: var(--secondary60-color-dark);
 }
 
 button {

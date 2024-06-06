@@ -1,6 +1,6 @@
 import { useUser } from '../../../hooks/useUser'
 import Spinner from '../../spinner/Index'
-import './Register.css'
+import '../Auth.css'
 
 const RegisterForm = () => {
   const {
@@ -31,7 +31,7 @@ const RegisterForm = () => {
           />
         </div>
 
-        <button onClick={validateInputs}>
+        <button className='auth-button' onClick={validateInputs}>
           {isSubmitting ? <Spinner size={20} /> : 'Register'}
         </button>
       </form>

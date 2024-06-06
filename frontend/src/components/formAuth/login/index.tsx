@@ -1,7 +1,7 @@
 import Spinner from '../../spinner/Index'
 import { useUser } from '../../../hooks/useUser'
 import { Link } from 'react-router-dom'
-import './Login.css'
+import '../Auth.css'
 
 const LoginForm = () => {
   const {
@@ -32,7 +32,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <button onClick={validateInputs}>
+        <button className='auth-button' onClick={validateInputs}>
           {isSubmitting ? <Spinner size={20} /> : 'Login'}
         </button>
         <p className='foot'>

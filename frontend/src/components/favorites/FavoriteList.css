@@ -13,10 +13,19 @@
 }
 
 .button-section:hover {
-  color: #facc15;
+  color: var(--secondary-color-light);
   background: none;
 }
 
-.active {
-  color: #facc15;
+.dark .button-section:hover {
+  color: var(--secondary-color-dark);
+  background: none;
+}
+
+.favorite-active {
+  color: var(--secondary-color-light);
+}
+
+.dark .favorite-active {
+  color: var(--secondary-color-dark);
 }

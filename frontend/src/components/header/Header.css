@@ -4,6 +4,7 @@ header {
   align-items: center;
   width: 100%;
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   margin-top: 8px;
@@ -12,6 +13,7 @@ header {
 nav {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 0px 12px;
   border-radius: 99px;
 }
@@ -32,12 +34,21 @@ nav a,
 
 nav a:hover,
 .logout:hover {
-  color: #facc15;
+  color: var(--secondary-color-light);
   background: none;
 }
 
+.dark nav a:hover,
+.dark .logout:hover {
+  color: var(--secondary-color-dark);
+}
+
 .active {
-  color: #facc15;
+  color: var(--secondary-color-light);
+}
+
+.dark .active {
+  color: var(--secondary-color-dark);
 }
 
 nav {

@@ -5,3 +5,11 @@ footer {
   gap: 10px;
   padding: 20px;
 }
+
+footer a {
+  color: var(--secondary60-color-light);
+}
+
+.dark footer a {
+  color: var(--secondary60-color-dark);
+}
