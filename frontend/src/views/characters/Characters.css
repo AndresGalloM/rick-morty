@@ -32,3 +32,9 @@
 .character-item p {
   margin: 0;
 }
+
+@media (max-width: 730px) {
+  .character-list {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
